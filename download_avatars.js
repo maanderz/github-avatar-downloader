@@ -1,7 +1,7 @@
 var request = require('request');
 var ignore = require('./secrets.js');
 
-console.log('Welcome to the GitHub Avatar Downloader!');
+// console.log('Welcome to the GitHub Avatar Downloader!');
 
 function getRepoContributors(repoOwner, repoName, cb) {
   var options = {
@@ -19,10 +19,12 @@ function getRepoContributors(repoOwner, repoName, cb) {
 }
 
 getRepoContributors('jquery', 'jquery', function(err, result) {
+    var avaUrl = "";
+    for (var i = 0; i < result.length; i++) {
+      avaUrl = result[i].avatar_url;
+      console.log("Result:", avaUrl);
+    }
     console.log("Errors:", err);
-    console.log("Result:", result);
 });
-
-
 
 
